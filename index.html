@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhanush Chanchali | AI & Data Science Portfolio</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --card-hover: #1f293d;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-color: #6366f1;
+            --accent-hover: #4f46e5;
+            --border-color: #1f2937;
+            --nav-bg: rgba(11, 15, 25, 0.85);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        /* SECTION LAYOUTS */
+        section {
+            padding: 5rem 2rem 3rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* HERO / PROFILE SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--card-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ABOUT SECTION */
+        .about-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* SKILLS SECTION */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* PROJECTS SECTION */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech span {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hyperlink {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .hyperlink:hover {
+            text-decoration: underline;
+            opacity: 0.85;
+        }
+
+        /* EDUCATION & CERTIFICATIONS */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .timeline-item {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.15rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--card-bg);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent-color);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--card-bg);
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#profile" class="logo">Dhanush<span>.ai</span></a>
+            <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- PROFILE / HERO SECTION -->
+    <section id="profile" class="hero">
+        <div class="hero-content">
+            <span class="hero-tag"><i class="fa-solid fa-brain"></i> AI & Data Science Student</span>
+            <h1>Hi, I'm Dhanush Chanchali</h1>
+            <p>Passionate about leveraging Machine Learning and Predictive Analytics to solve real-world problems in Healthcare and Elder Care.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+                <a href="#projects" class="btn btn-outline"><i class="fa-solid fa-code"></i> View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-text">
+            <p>I am an AI and Data Science student at KL University driven by a mission to build technology tools that improve quality of life, specifically in healthcare and elder care domains.</p>
+            <br>
+            <p>My technical foundation revolves around Python, Machine Learning workflows, and Data Analytics. With a background in competitive debate, I bring strong analytical thinking, critical questioning, and clear technical communication to every engineering challenge I undertake.</p>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fa-solid fa-code"></i> Languages</h3>
+                <div class="skills-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fa-solid fa-robot"></i> AI & Data Science</h3>
+                <div class="skills-tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Predictive Analytics</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Scikit-Learn</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Platforms</h3>
+                <div class="skills-tags">
+                    <span class="tag">Git</span>
+                    <span class="tag">GitHub</span>
+                    <span class="tag">VS Code</span>
+                    <span class="tag">Jupyter Notebooks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div>
+                    <h3>Healthcare Risk Predictor</h3>
+                    <p>Machine Learning model concept designed to analyze patient health metrics for early risk assessment and predictive analytics in elder care.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Scikit-Learn</span>
+                        <span>Pandas</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dhanush-chanchali" target="_blank" class="hyperlink">GitHub Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <h3>Personal Academic Portfolio</h3>
+                    <p>A responsive dark-themed portfolio website highlighting background, projects, skills, and direct academic contact channels.</p>
+                    <div class="project-tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dhanush-chanchali/my-portfolio" target="_blank" class="hyperlink">GitHub Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <h3>Student Management Interface</h3>
+                    <p>Structured dashboard system displaying student records, data visualization tables, and layout components built for data management.</p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dhanush-chanchali" target="_blank" class="hyperlink">GitHub Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>B.Tech in Artificial Intelligence & Data Science</h3>
+                <p><strong>KL University</strong> | Currently Pursuing</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Senior Secondary Education (12th Grade)</h3>
+                <p><strong>Meluha International School</strong></p>
+            </div>
+            <div class="timeline-item">
+                <h3>Secondary School Certificate (10th Grade)</h3>
+                <p><strong>Shree Swaminarayan Gurukul International School</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications">
+        <h2 class="section-title">Certifications & Learning</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Software Engineering & Data Analysis Webinars</h3>
+                <p><strong>GUVI Geek Network</strong> | Hands-on training on practical software engineering methodologies and core data analytics tools.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-grid">
+            
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                    <small>Email</small><br>
+                    <a href="mailto:dhanush.2482006@icloud.com" class="hyperlink">dhanush.2482006@icloud.com</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                    <small>Phone</small><br>
+                    <span>+91 8500886909</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <div>
+                    <small>LinkedIn Profile</small><br>
+                    <a href="https://www.linkedin.com/in/dhanush-chanchali-681b7128b/" target="_blank" class="hyperlink">LinkedIn Profile <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-brands fa-github"></i>
+                <div>
+                    <small>GitHub Profile</small><br>
+                    <a href="https://github.com/dhanush-chanchali" target="_blank" class="hyperlink">GitHub Profile <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Dhanush Chanchali. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR MOBILE NAVIGATION -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
