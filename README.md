@@ -25,4 +25,4 @@ Welcome to the official repository for my personal academic and project portfoli
 
 ## 🌐 Live Demo
 Visit the live site hosted on GitHub Pages:  
-👉 [https://dhanush-chanchali.github.io/my-portfolio/]([https://dhanush-chanchali.github.io/my-portfolio/](https://dhanush-chanchali.github.io/Portfolio/))
+👉 [https://dhanush-chanchali.github.io/Portfolio/#profile](https://dhanush-chanchali.github.io/Portfolio/#profile)
